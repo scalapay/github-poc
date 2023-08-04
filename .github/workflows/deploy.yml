@@ -1,4 +1,6 @@
 name: deploy
+run-name: Deploy to ${{ inputs.environment }}
+
 on:
   workflow_dispatch:
     inputs:
