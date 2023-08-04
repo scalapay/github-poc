@@ -1,0 +1,17 @@
+name: deploy
+on: push
+
+jobs:
+  dev:
+    name: Deploy to DEV
+    environment: dev
+    runs-on: ubuntu-latest
+    steps:
+      - run: ./.github/scripts/deploy.sh
+  stg:
+    name: Deploy to STG
+    environment: stg
+    needs: dev
+    runs-on: ubuntu-latest
+    steps:
+      - run: ./.github/scripts/deploy.sh
