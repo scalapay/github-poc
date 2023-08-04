@@ -1,18 +1,16 @@
 name: deploy
-on: push
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: Environment to deploy to
+        required: true
+        type: environment
 
 jobs:
-  dev:
-    name: Deploy to DEV
-    environment: dev
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - run: ./.github/scripts/deploy.sh
-  stg:
-    name: Deploy to STG
-    environment: stg
-    needs: dev
+  deploy:
+    name: Deploy to ${{ inputs.environment }}
+    environment: ${{ inputs.environment }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
