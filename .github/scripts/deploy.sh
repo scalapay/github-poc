@@ -9,3 +9,5 @@ if [[ $GITHUB_JOB == 'prd' ]]; then
 else
   echo "Not a production deployment"
 fi
+
+echo "Testing new commit"
